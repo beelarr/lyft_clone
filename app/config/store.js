@@ -3,9 +3,7 @@ import thunk from "redux-thunk";
 import reducer from "../reducers";
 import logger from "redux-logger";
 
-if (process.env.NODE_ENV === "development") {
-  middleware.push(logger);
-}
+
 
 export default (initalState = {}) => {
   const middleware = [thunk, logger];
@@ -15,5 +13,9 @@ export default (initalState = {}) => {
     initialState,
     compose(applyMiddleware(...middleware), ...enhancers)
   );
+	if (process.env.NODE_ENV === "development") {
+		middleware.push(logger);
+	}
+
   return store;
 };
