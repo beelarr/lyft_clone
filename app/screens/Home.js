@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Text } from "react-native";
 import { Container } from "../components/Container";
 import { connect } from "react-redux";
-import { setName } from "../actions/inital";
 
 class Home extends Component {
   render() {
