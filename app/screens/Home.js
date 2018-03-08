@@ -6,9 +6,10 @@ import { setName } from "../actions/inital";
 
 class Home extends Component {
   render() {
+  console.log('props in home', this.props);
     return (
       <Container>
-        <Text>Hello from {this.props.name.name}</Text>
+        <Text>Hello from {this.props.beelarr}</Text>
       </Container>
     );
   }
@@ -16,9 +17,9 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   console.log('state in home', state);
-  const name = state.name;
+  const beelarr = state.name.name;
   return {
-    name
+    beelarr
   };
 };
 

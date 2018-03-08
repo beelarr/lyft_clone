@@ -4,4 +4,5 @@ export const setName = () => ({
   type: SET_NAME,
   name: "Bryon"
 
+
 });

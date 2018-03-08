@@ -1,7 +1,7 @@
 import { SET_NAME, setName } from "../actions/inital";
 
 const initialState = {
-	name: "Bryon"
+	name: 'Bryon'
 };
 
 const reducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
 		case SET_NAME:
 			return {
 				...state,
-				name: action.name
+				firstName: action.name
 			};
 		default:
 			return state;
