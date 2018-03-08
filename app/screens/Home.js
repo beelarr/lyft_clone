@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { Text } from "react-native";
 import { Container } from "../components/Container";
 import { connect } from "react-redux";
+import { Map } from "../components/Map"
 
 class Home extends Component {
   render() {
   console.log('props in home', this.props);
     return (
-      <Container>
-        <Text>Hello from {this.props.beelarr}</Text>
-      </Container>
+      <Map/>
     );
   }
 }
