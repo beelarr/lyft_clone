@@ -17,18 +17,11 @@ EStyleSheet.build({
   $lightGrey: "#F0F0F0"
 });
 
-const App = ({ dispatch, nav }) => (
 
-	<Navigator
-		navigation={addNavigationHelpers({
-			dispatch,
-			state: nav,
-		})}
-	/>
-);
 
 const mapStateToProps = state => ({
-	nav: state.nav
+	nav: state.nav,
+	name: state.name
 });
 
 const AppWithNavigation = connect(mapStateToProps)(Home);
