@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Text, StatusBar, KeyboardAvoidingView } from "react-native";
 import { Container } from "../components/Container";
 import { connect } from "react-redux";
-import { Actions } from "react-native-router-flux";
 import { Logo } from "../components/Logo";
+
 
 
 class Home extends Component {
@@ -14,7 +14,6 @@ class Home extends Component {
         <StatusBar translucent={false} barStyle="light-content" />
         <KeyboardAvoidingView behavior="padding">
           <Logo />
-          <Text onPress={Actions.map}>Go to Map</Text>
         </KeyboardAvoidingView>
       </Container>
     );
