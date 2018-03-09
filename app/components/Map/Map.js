@@ -7,12 +7,12 @@ import { Text, View } from 'react-native';
 class Map extends Component {
 
 	state = {
-			latitude: '',
-			longitude: '',
+			latitude: 36.175236,
+			longitude: -86.756382,
 			error: ''
 		};
 
-	componentWillMount() {
+	componentDidMount() {
 		this.watchId = navigator.geolocation.watchPosition(
 			(position) => {
 				console.log('position info', position);
@@ -42,6 +42,7 @@ class Map extends Component {
 						longitudeDelta: 0.0421,
 					}}
 					mapType="mutedStandard"
+					showsUserLocation={true}
 				/>
 
 
