@@ -1,5 +1,8 @@
 {
   "expo": {
     "sdkVersion": "25.0.0"
+  },
+  "infoPlist": {
+    "NSLocationWhenInUseUsageDescription": "This app uses the location of the user."
   }
 }
