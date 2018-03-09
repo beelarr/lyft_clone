@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { MapView } from 'expo';
 import styles from './styles'
-import { Text, View } from 'react-native';
 
 
 class Map extends Component {
@@ -43,6 +42,7 @@ class Map extends Component {
 					}}
 					mapType="mutedStandard"
 					showsUserLocation={true}
+					followsUserLocation={true}
 				/>
 
 

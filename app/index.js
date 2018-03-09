@@ -1,12 +1,11 @@
 import React from "react";
 
 import EStyleSheet from "react-native-extended-stylesheet";
-import { Router } from "react-native-router-flux";
+import { Router, Scene } from "react-native-router-flux";
 import { Provider, connect } from "react-redux";
 import store from './config/store';
-import scenes from './config/routes'
 
-
+import { Map } from './components/Map';
 import Home from "./screens/Home";
 
 EStyleSheet.build({
@@ -30,6 +29,11 @@ const AppWithNavigation = connect(mapStateToProps)(Home);
 
 export default () => (
 	<Provider store={store}>
-		<Router scenes={scenes} />
+		<Router>
+			<Scene key="root">
+				<Scene key="home" component={Home} title="Home" initial={true} />
+				<Scene key="map" component={Map} title="Map" />
+			</Scene>
+		</Router>
 	</Provider>
 );
