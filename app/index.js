@@ -32,7 +32,7 @@ export default () => (
 		<Router>
 			<Scene key="root">
 				<Scene key="home" component={Home} title="Home" initial={true} />
-				<Scene key="map" component={Map} title="Map" />
+				<Scene key="map" component={Map} title="Choose Service Location" />
 			</Scene>
 		</Router>
 	</Provider>
