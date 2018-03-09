@@ -1,15 +1,16 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
 import  { Dimensions }  from 'react-native';
 
-const imageWidth = Dimensions.get('window').width / 2;
+const imageWidth = Dimensions.get('window').width ;
+const imageHeight = Dimensions.get('window').height / 2;
+
 
 
 
 export default EStyleSheet.create({
-	$largeContainerSize: imageWidth,
-	$largeImageSize: imageWidth / 2,
-	$smallContainerSize: imageWidth / 2,
-	$smallImageSize: imageWidth / 4,
+	$largeContainerWidth: imageWidth,
+	$largeContainerHeight: imageHeight,
+
 
 	container:{
 		alignItems: 'center',
@@ -18,19 +19,14 @@ export default EStyleSheet.create({
 	containerImage: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: '$largeContainerSize',
-		height: '$largeContainerSize',
-
-	},
-	logo: {
-		width: '$largeImageSize',
-		tintColor: '$primaryBlue'
+		width: '$largeContainerWidth',
+		height: '$largeContainerHeight',
 
 	},
 	text: {
-		fontWeight: '600',
-		fontSize: 28,
-		letterSpacing: -0.5,
+		fontWeight: '400',
+		fontSize: 48,
+		letterSpacing: -0.2,
 		marginTop: 15,
 		color: '$logoTextColor',
 
