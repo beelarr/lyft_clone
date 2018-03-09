@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
+import { Text, StatusBar, KeyboardAvoidingView } from "react-native";
 import { Container } from "../components/Container";
 import { connect } from "react-redux";
-import { Actions } from "react-native-router-flux";
+import { Logo } from "../components/Logo";
+
+
 
 class Home extends Component {
   render() {
     console.log("props in home", this.props);
     return (
       <Container>
-        <Text>IVASAP</Text>
-        <Text onPress={Actions.map}>Go to Map</Text>
+        <StatusBar translucent={false} barStyle="light-content" />
+        <KeyboardAvoidingView behavior="padding">
+          <Logo />
+        </KeyboardAvoidingView>
       </Container>
     );
   }

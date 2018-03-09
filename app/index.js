@@ -13,7 +13,9 @@ EStyleSheet.build({
   $white: "#FFFFFF",
   $border: "#E2E2E2",
   $inputText: "#797979",
-  $lightGrey: "#F0F0F0"
+  $lightGrey: "#F0F0F0",
+	$logoTextColor: 'white',
+	$darkText: '#343434'
 });
 
 
@@ -32,7 +34,7 @@ export default () => (
 		<Router>
 			<Scene key="root">
 				<Scene key="home" component={Home} title="Home" initial={true} />
-				<Scene key="map" component={Map} title="Map" />
+				<Scene key="map" component={Map} title="Choose Service Location" />
 			</Scene>
 		</Router>
 	</Provider>
