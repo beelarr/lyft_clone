@@ -30,6 +30,7 @@
     "prop-types": "^15.6.1",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-elements": "^1.0.0-BETA3",
     "react-native-extended-stylesheet": "^0.8.1",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-redux": "^5.0.7",

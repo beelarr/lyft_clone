@@ -5447,9 +5447,9 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-elements@1.0.0-beta2:
-  version "1.0.0-beta2"
-  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.0.0-beta2.tgz#39f1f98e9cb6e05facd71a955bcf8796705fe520"
+react-native-elements@^1.0.0-BETA3:
+  version "1.0.0-beta3"
+  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.0.0-beta3.tgz#3f1a4e9ef17981609366e002800036d193ece60e"
   dependencies:
     lodash.isempty "^4.4.0"
     lodash.times "^4.3.2"
