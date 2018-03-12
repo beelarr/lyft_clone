@@ -13,6 +13,8 @@ class Map extends Component {
     error: '',
   };
 
+  onDragHandler = coordinate => this.setState({ coordinate: coordinate });
+
   componentDidMount() {
     this.watchId = navigator.geolocation.watchPosition(
       position => {
@@ -53,7 +55,12 @@ class Map extends Component {
         followsUserLocation={true}
         showsMyLocationButton={true}
       >
-        <Marker coordinate={this.state.coordinate} />
+        <Marker
+          coordinate={this.state.coordinate}
+          title="My Location"
+          draggable
+          onDragEnd={coordinate => this.onDragHandler(coordinate)}
+        />
       </MapView>
     );
   }
