@@ -10,7 +10,7 @@ export default class Logo extends Component {
         style={styles.containerImage}
         source={require('./images/HP-Hero-BG-trim.jpg')}
       >
-        <Text style={styles.text} onPress={Actions.map}>
+        <Text style={styles.text} >
           Login
         </Text>
       </ImageBackground>

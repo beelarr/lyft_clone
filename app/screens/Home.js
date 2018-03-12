@@ -4,6 +4,7 @@ import { Container } from '../components/Container';
 import { connect } from 'react-redux';
 import { Logo } from '../components/Logo';
 import { LoginButton } from '../components/Button/Button';
+import { Actions } from 'react-native-router-flux';
 
 class Home extends Component {
   render() {
@@ -13,7 +14,7 @@ class Home extends Component {
         <StatusBar translucent={false} barStyle="light-content" />
         <KeyboardAvoidingView behavior="padding">
           <Logo />
-          <LoginButton />
+          <LoginButton onPress={Actions.map} />
         </KeyboardAvoidingView>
       </Container>
     );

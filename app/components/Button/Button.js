@@ -14,7 +14,7 @@ export const LoginButton = () => (
       height: height / 15,
       borderColor: '#371B92',
       borderWidth: 2,
-      borderRadius: 20,
+      borderRadius: 25,
     }}
     containerStyle={{ marginTop: 20 }}
   />
