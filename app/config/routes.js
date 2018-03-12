@@ -1,16 +1,16 @@
-// import React from "react";
-// import { Actions, Scene } from "react-native-router-flux";
-// import Home from "../screens/Home";
-// import Map from "../screens/Map";
+// import React from 'react';
+// import { Actions, Scene } from 'react-native-router-flux';
+// import Home from '../screens/Home';
+// import Map from '../screens/Map';
 // import { StyleSheet } from 'react-native';
 //
 // let style = StyleSheet.create({
-// 	tabBarStyle: {
-// 		borderTopWidth : .5,
-// 		borderColor    : '#b7b7b7',
-// 		backgroundColor: 'white',
-// 		opacity        : 1
-// 	}
+//   tabBarStyle: {
+//     borderTopWidth: 0.5,
+//     borderColor: '#b7b7b7',
+//     backgroundColor: 'white',
+//     opacity: 1,
+//   },
 // });
 //
 // const scenes = Actions.create(
@@ -23,8 +23,7 @@
 //       alignSelf="center"
 //     />
 //     <Scene key="map" component={Map} />
-//
-//     </Scene>
+//   </Scene>
 // );
 //
 // export default scenes;
