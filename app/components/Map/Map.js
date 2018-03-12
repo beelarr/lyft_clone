@@ -7,13 +7,13 @@ const { Marker } = MapView;
 class Map extends Component {
   state = {
     coordinate: {
-      latitude: 36.175236,
       longitude: -86.756382,
+      latitude: 36.175236,
     },
     error: '',
   };
 
-  onDragHandler = coordinate => this.setState({ coordinate: coordinate });
+  onDragHandler = e => this.setState({ coordinate: e.coordinate });
 
   componentDidMount() {
     this.watchId = navigator.geolocation.watchPosition(
@@ -58,8 +58,9 @@ class Map extends Component {
         <Marker
           coordinate={this.state.coordinate}
           title="My Location"
+          description="Drag to an alternate location."
           draggable
-          onDragEnd={coordinate => this.onDragHandler(coordinate)}
+          onDragEnd={e => this.onDragHandler(e.nativeEvent)}
         />
       </MapView>
     );
