@@ -13,7 +13,10 @@ class Map extends Component {
     error: '',
   };
 
-  onDragHandler = e => this.setState({ coordinate: e.coordinate });
+  onDragHandler = e => {
+    e.preventDefault();
+    this.setState({ coordinate: e.coordinate });
+  };
 
   componentDidMount() {
     this.watchId = navigator.geolocation.watchPosition(

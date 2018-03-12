@@ -5,7 +5,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import { Provider, connect } from 'react-redux';
 import store from './config/store';
 
-import { Map } from './components/Map';
+import Map  from './screens/Map';
 import Home from './screens/Home';
 
 EStyleSheet.build({
