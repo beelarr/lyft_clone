@@ -4,7 +4,6 @@ import {
   KeyboardAvoidingView,
   Dimensions,
   View,
-  TouchableOpacity,
 } from 'react-native';
 import { Container } from '../components/Container';
 import { connect } from 'react-redux';

@@ -23,5 +23,8 @@ export default EStyleSheet.create({
     letterSpacing: -0.2,
     marginTop: 15,
     color: '$logoTextColor',
+    '@media android': {
+      fontSize: 60,
+    },
   },
 });
