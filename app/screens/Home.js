@@ -26,7 +26,7 @@ class Home extends Component {
             style={{ alignItems: 'center', justifyContent: 'space-around' }}
           >
             <Input
-              placeholder="Please enter your Username"
+              placeholder="Please Enter your Username"
               shake={true}
               autocorrect={false}
             />
