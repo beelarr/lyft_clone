@@ -1,9 +1,6 @@
-import { combineReducers } from "redux";
-import nav from "./nav";
-import name from './name';
-
+import { combineReducers } from 'redux';
+import locations from './locations';
 
 export default combineReducers({
-	nav,
-	name
-})
+  locations,
+});
