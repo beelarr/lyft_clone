@@ -2,7 +2,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
-const imageHeight = height / 2;
+const imageHeight = height / 2.3;
 
 export default EStyleSheet.create({
   $largeContainerWidth: width,

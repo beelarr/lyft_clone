@@ -68,7 +68,7 @@ class Home extends Component {
             />
             <Button
               title="Create An Account"
-              titleStyle={{ fontWeight: '900', color: '#000000', fontSize: 18 }}
+              titleStyle={{ fontWeight: '900', color: '#000000', fontSize: 17 }}
               buttonStyle={{
                 backgroundColor: 'white',
                 width: width / 1.75,
