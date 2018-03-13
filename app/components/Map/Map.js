@@ -21,6 +21,7 @@ class Map extends Component {
         console.log('position info', position);
         this.props.dispatch(getUsersInitialLocation(position));
       },
+      error => `Alert ${error.message}`,
       {
         enableHighAccuracy: true,
         timeout: 20000,
