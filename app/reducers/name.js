@@ -1,4 +1,4 @@
-import { SET_NAME, setName } from "../actions/inital";
+import { SET_NAME, setName } from "../actions/locations";
 
 const initialState = {
 	name: 'Bryon'

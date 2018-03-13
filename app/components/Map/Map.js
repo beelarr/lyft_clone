@@ -5,13 +5,7 @@ import styles from './styles';
 const { Marker } = MapView;
 
 class Map extends Component {
-  state = {
-    coordinate: {
-      longitude: -86.756382,
-      latitude: 36.175236,
-    },
-    error: '',
-  };
+
 
   onDragHandler = e => this.setState({ coordinate: e.coordinate });
 
