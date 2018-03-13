@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
 import { MapView } from 'expo';
 import styles from './styles';
+import {
+  getUsersInitialLocation,
+  getUsersCustomLocation,
+} from '../../actions/locations';
+import { connect } from 'react-redux';
 
 const { Marker } = MapView;
 
 class Map extends Component {
-  state = {
-    coordinate: {
-      longitude: -86.756382,
-      latitude: 36.175236,
-    },
-    error: '',
+  onDragHandler = e => {
+    console.log('event on drag', e.coordinate);
+    this.props.dispatch(getUsersCustomLocation(e.coordinate));
   };
-
-  onDragHandler = e => this.setState({ coordinate: e.coordinate });
 
   componentDidMount() {
     this.watchId = navigator.geolocation.watchPosition(
       position => {
         console.log('position info', position);
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-          error: null,
-        });
+        this.props.dispatch(getUsersInitialLocation(position));
       },
-      error => this.setState({ error: error.message }),
       {
         enableHighAccuracy: true,
         timeout: 20000,
@@ -44,8 +39,8 @@ class Map extends Component {
       <MapView
         style={styles.container}
         region={{
-          latitude: this.state.coordinate.latitude,
-          longitude: this.state.coordinate.longitude,
+          latitude: this.props.coordinate.latitude,
+          longitude: this.props.coordinate.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
@@ -56,7 +51,7 @@ class Map extends Component {
         showsMyLocationButton={true}
       >
         <Marker
-          coordinate={this.state.coordinate}
+          coordinate={this.props.coordinate}
           title="My Location"
           description="Drag to an alternate location."
           draggable
@@ -67,4 +62,12 @@ class Map extends Component {
   }
 }
 
-export default Map;
+const mapStateToProps = state => {
+  const coordinate = state.locations.coordinate;
+
+  return {
+    coordinate,
+  };
+};
+
+export default connect(mapStateToProps)(Map);

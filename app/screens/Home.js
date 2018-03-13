@@ -87,12 +87,4 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log('state in home', state);
-  const beelarr = state.name.name;
-  return {
-    beelarr,
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;
