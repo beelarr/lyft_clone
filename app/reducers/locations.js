@@ -1,11 +1,16 @@
-import { GET_USERS_INITIAL_LOCATION, GET_USERS_CUSTOM_LOCATION } from '../actions/locations';
+import {GET_USERS_INITIAL_LOCATION, GET_USERS_CUSTOM_LOCATION, BOOK_SERVICES} from '../actions/locations';
 
 const initialState = {
-  coordinate: {
-    longitude: -86.756382,
-    latitude: 36.175236,
-  },
-};
+	user: {
+		userName: 'beelarr',
+		firstName: 'Bryon',
+		lastName: 'Larrance',
+    coordinate: {
+			longitude: -86.756382,
+			latitude: 36.175236,
+		},
+	}
+}
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,6 +23,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         coordinate: action.coordinate,
+      }
+    case BOOK_SERVICES:
+      return {
+        ...state,
+        user: action.payload
       }
     default:
       return state;
