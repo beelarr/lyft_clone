@@ -48,7 +48,7 @@ class Home extends Component {
                 borderRadius: 25,
               }}
               containerStyle={{ marginTop: 20 }}
-              onPress={Actions.map}
+              onPress={Actions.services}
             />
             <Button
               title="Login By Facebook"
@@ -64,7 +64,7 @@ class Home extends Component {
               icon={<FontAwesome name="facebook" size={20} color="white" />}
               iconLeft
               containerStyle={{ marginTop: 20 }}
-              onPress={Actions.map}
+              onPress={Actions.services}
             />
             <Button
               title="Create An Account"
@@ -78,7 +78,7 @@ class Home extends Component {
                 paddingBottom: 20,
               }}
               containerStyle={{ marginTop: 20 }}
-              onPress={Actions.map}
+              onPress={Actions.services}
             />
           </View>
         </KeyboardAvoidingView>
