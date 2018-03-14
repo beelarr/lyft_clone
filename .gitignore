@@ -20,8 +20,6 @@ yarn-error.log*
 node_modules/
 package-lock.json
 package.json
-routes/
-server.js
 server/node_modules
 
 
