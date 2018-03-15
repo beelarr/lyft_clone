@@ -43,12 +43,17 @@
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var bookings = require('./routes/bookings');
+var nurseLocation = require('./routes/nurseLocation')
 
 server.listen(3000);
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
+
+app.use('/api', bookings);
+app.use('/api', nurseLocation)
 
 io.on('connection', function(socket) {
   socket.emit('news', { hello: 'world' });
