@@ -30,7 +30,12 @@ class Map extends Component {
         distanceFilter: 10,
       }
     );
-    setTimeout(() => this.props.dispatch(getNearbyNurses()), 1000);
+
+    fetch('http://localhost:3000/api/nurseLocation').then(response =>
+      response.json().then(data => {
+        setTimeout(() => this.props.dispatch(getNearbyNurses(data)), 2000);
+      })
+    );
   }
 
   componentWillUnmount() {

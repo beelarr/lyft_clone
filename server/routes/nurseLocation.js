@@ -6,9 +6,10 @@ var db = mongoJS(
   'mongodb://beelarr:123456@ds215089.mlab.com:15089/ivasap-mobile',
   ['nursesLocation']
 );
+
 // Get for nearby nurse
 
-router.get('/nurseLocation/', function(req, res, next) {
+router.get('/nurseLocation', function(req, res, next) {
   db.nursesLocation.ensureIndex({ coordinate: '2dsphere' });
   db.nursesLocation.find(
     {

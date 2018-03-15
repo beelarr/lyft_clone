@@ -44,8 +44,8 @@ app.use('/api', bookings);
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 // var bookings = require('./routes/bookings');
-// var nurseLocationSocket = require('./routes/nurseLocation');
-// var nurseLocation = require('./routes/nurseLocation');
+var nurseLocationSocket = require('./routes/nurseLocation');
+var nurseLocation = require('./routes/nurseLocation');
 //
 // server.listen(3000);
 //
@@ -53,13 +53,12 @@ var io = require('socket.io')(server);
 //   res.sendFile(__dirname + '/views/index.html');
 // });
 //
-// app.use('/api', bookings);
-// app.use('/api', nurseLocationSocket);
-// app.use('/api', nurseLocation);
+app.use('/api', nurseLocationSocket);
+app.use('/api', nurseLocation);
 //
 io.on('connection', function(socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function(data) {
-    console.log(data);
+    console.log('data', data);
   });
 });
