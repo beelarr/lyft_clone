@@ -23,7 +23,11 @@ class ServicesScreen extends Component {
         latitude: 36.218,
       },
     };
+
+    this.props.dispatch(bookServices(user));
+
     const url = 'http://localhost:3000/api/bookings';
+
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(user),
@@ -31,7 +35,6 @@ class ServicesScreen extends Component {
         'Content-Type': 'application/json',
       }),
     })
-      .then(this.props.dispatch(bookServices(user)))
       .then(res => res.json())
       .catch(error => console.log('Error', error))
       .then(response => console.log('Success:', response));

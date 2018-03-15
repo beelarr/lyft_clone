@@ -15,20 +15,22 @@ router.get('/bookings', function(req, res, next) {
     res.json(bookings);
   });
 });
-router.post('/bookings', function(req, res, next) {
-  var booking = req.body.data;
 
-  if (!booking.userName) {
-    res.status(400);
-    res.json({
-      error: 'Your data is no good here.',
-    });
-  } else {
+router.post('/bookings', function(req, res, next) {
+  var booking = req.body;
+  console.log('booking in router', booking);
+
+  if (booking.userName) {
     db.bookings.save(booking, function(err, savedBooking) {
       if (err) {
         res.send(err);
       }
       res.json(savedBooking);
+    });
+  } else {
+    res.status(400);
+    res.json({
+      error: 'Your data is no good here.',
     });
   }
 });
