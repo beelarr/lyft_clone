@@ -4,6 +4,7 @@ import styles from './styles';
 import {
   getUsersInitialLocation,
   getUsersCustomLocation,
+  getNearbyNurses,
 } from '../../actions/locations';
 import { connect } from 'react-redux';
 
@@ -15,7 +16,7 @@ class Map extends Component {
     this.props.dispatch(getUsersCustomLocation(e.coordinate));
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.watchId = navigator.geolocation.watchPosition(
       position => {
         console.log('position info', position);
@@ -29,6 +30,7 @@ class Map extends Component {
         distanceFilter: 10,
       }
     );
+    setTimeout(() => this.props.dispatch(getNearbyNurses()), 1000);
   }
 
   componentWillUnmount() {
@@ -64,10 +66,12 @@ class Map extends Component {
 }
 
 const mapStateToProps = state => {
-  const coordinate = state.locations.coordinate;
+  const coordinate = state.locations.user.coordinate;
+  const nearbyNurses = state.locations.nearbyNurses;
 
   return {
     coordinate,
+    nearbyNurses,
   };
 };
 

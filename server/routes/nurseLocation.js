@@ -8,19 +8,21 @@ var db = mongoJS(
 );
 // Get for nearby nurse
 
-router.get('/nurseLocationSocket/', function(req, res, next) {
-  db.nursesLocation.ensureIndex(['coordinate', '2dsphere']);
-  db.nursesLocation.find({
-    coordinate: {
-      $near: {
-        $geometry: {
-          type: 'Point',
-          coordinates: [
-            parseFloat(req.query.longitude),
-            parseFloat(req.query.latitude),
-          ],
+router.get('/nurseLocation/', function(req, res, next) {
+  db.nursesLocation.ensureIndex({ coordinate: '2dsphere' });
+  db.nursesLocation.find(
+    {
+      coordinate: {
+        $near: {
+          $geometry: {
+            type: 'Point',
+            coordinates: [
+              parseFloat(req.query.longitude),
+              parseFloat(req.query.latitude),
+            ],
+          },
+          $maxDistance: 10000,
         },
-        $maxDistance: 10000,
       },
     },
     function(err, location) {
@@ -29,8 +31,8 @@ router.get('/nurseLocationSocket/', function(req, res, next) {
       } else {
         res.send(location);
       }
-    },
-  });
+    }
+  );
 });
 
 // Update Nurse's socket id

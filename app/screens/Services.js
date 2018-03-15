@@ -9,6 +9,7 @@ import { Container } from '../components/Container';
 import { Services } from '../components/Services';
 import { connect } from 'react-redux';
 import { bookServices } from '../actions/locations';
+import { Actions } from 'react-native-router-flux';
 
 const { width, height } = Dimensions.get('window');
 
@@ -49,7 +50,7 @@ class ServicesScreen extends Component {
           <View
             style={{ alignItems: 'center', justifyContent: 'space-around' }}
           >
-            <Services onPress={this.bookHandler} />
+            <Services onPress={this.bookHandler && Actions.map} />
           </View>
         </KeyboardAvoidingView>
       </Container>
