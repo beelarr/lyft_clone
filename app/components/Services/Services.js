@@ -21,7 +21,6 @@ class Services extends Component {
           }}
           containerStyle={{ marginTop: 20 }}
           onPress={this.props.onPress}
-
         />
       </View>
     );

@@ -36,7 +36,5 @@ export const bookServices = user => ({
 
 export const getNearbyNurses = nurses => ({
   type: GET_NEARBY_NURSES,
-  payload: {
-  	nurses: nurses
-  }
+  payload: nurses,
 });

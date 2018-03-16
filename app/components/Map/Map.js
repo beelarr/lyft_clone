@@ -7,41 +7,41 @@ import {
   getNearbyNurses,
 } from '../../actions/locations';
 import { connect } from 'react-redux';
+import nurseCar from '../../assests/carMarker.png';
 
 const { Marker } = MapView;
 
+
 class Map extends Component {
-  onDragHandler = e => {
-    console.log('event on drag', e.coordinate);
-    this.props.dispatch(getUsersCustomLocation(e.coordinate));
-  };
+  onDragHandler = e => this.props.dispatch(getUsersCustomLocation(e.coordinate));
+
 
   componentWillMount() {
-    this.watchId = navigator.geolocation.watchPosition(
-      position => {
-        console.log('position info', position);
-        this.props.dispatch(getUsersInitialLocation(position));
-      },
-      error => `Alert ${error.message}`,
-      {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 1000,
-        distanceFilter: 10,
-      }
-    );
-
-    const url = `http://localhost:3000/api/nurseLocation?longitude=${
-      this.props.coordinate.longitude
-    }&latitude=${this.props.coordinate.latitude}`;
-
-    fetch(url).then(response =>
-      response.json().then(data => {
-        console.log('data', data);
-        setTimeout(() => this.props.dispatch(getNearbyNurses(data)), 2000);
-      })
-    );
+	  this.watchId = navigator.geolocation.watchPosition(
+		  position => {
+			  this.props.dispatch(getUsersInitialLocation(position));
+		  },
+		  error => `Alert ${error.message}`,
+		  {
+			  enableHighAccuracy: true,
+			  timeout: 20000,
+			  maximumAge: 1000,
+			  distanceFilter: 10,
+		  }
+	  );
   }
+
+	componentDidMount() {
+		const url = `http://localhost:3000/api/nurseLocation?longitude=${
+			this.props.coordinate.longitude
+			}&latitude=${this.props.coordinate.latitude}`;
+
+		fetch(url).then(response =>
+			response.json().then(data => {
+				setTimeout(() => {this.props.dispatch(getNearbyNurses(data))}, 2500);
+			})
+		);
+	}
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
@@ -70,7 +70,22 @@ class Map extends Component {
           draggable
           onDragEnd={e => this.onDragHandler(e.nativeEvent)}
         />
-      </MapView>
+	      {
+	        this.props.nearbyNurses.map((marker, index) => {
+	            console.log('marker-latitude', marker.coordinate.coordinates[1]);
+
+	            <Marker
+			          key={index}
+			          coordinate={{
+				          latitude: marker.coordinate.coordinates[1],
+				          longitude: marker.coordinate.coordinates[0],
+			          }}
+			          image={nurseCar}
+
+	            />
+	          })
+        }
+	      </MapView>
     );
   }
 }

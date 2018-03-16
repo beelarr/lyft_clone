@@ -20,12 +20,6 @@ EStyleSheet.build({
   $loginButtonText: '#371B92',
 });
 
-const mapStateToProps = state => ({
-  nav: state.nav,
-  name: state.name,
-});
-
-const AppWithNavigation = connect(mapStateToProps)(Home);
 
 export default () => (
   <Provider store={store}>

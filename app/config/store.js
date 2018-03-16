@@ -3,7 +3,6 @@ import thunk from "redux-thunk";
 import reducers from "../reducers";
 import logger from "redux-logger";
 
-
 const middleware = [thunk];
 
 if (process.env.NODE_ENV === "development") {

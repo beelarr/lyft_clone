@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { bookServices } from '../actions/locations';
 import { Actions } from 'react-native-router-flux';
 
-const { width, height } = Dimensions.get('window');
 
 class ServicesScreen extends Component {
   bookHandler = () => {
@@ -42,7 +41,6 @@ class ServicesScreen extends Component {
   };
 
   render() {
-    console.log('props in home', this.props);
     return (
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
