@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var bookings = require('./routes/bookings');
+var nurseLocationSocket = require('./routes/nurseLocation');
+var nurseLocation = require('./routes/nurseLocation');
 
 var app = express();
 
@@ -12,9 +14,7 @@ var port = 3000;
 var socket = require('socket.io');
 var io = socket();
 
-app.listen(port, function() {
-  console.log('Server running on port', port);
-});
+
 
 //Views
 
@@ -31,21 +31,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', index);
 app.use('/api', bookings);
+app.use('/api', nurseLocationSocket);
+app.use('/api', nurseLocation);
 
 //Socket
+// var server = require('http').Server(app);
+// var io = require('socket.io')(server);
 
-// io.listen(
-//   app.listen(port, function() {
-//     console.log('Server running on port', port);
-//   })
-// );
+io.listen(app.listen(port, function() {
+    console.log('Server running on port', port);
+  })
+);
 
 // var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+
 // var bookings = require('./routes/bookings');
-var nurseLocationSocket = require('./routes/nurseLocation');
-var nurseLocation = require('./routes/nurseLocation');
+
 //
 // server.listen(3000);
 //
@@ -53,12 +54,12 @@ var nurseLocation = require('./routes/nurseLocation');
 //   res.sendFile(__dirname + '/views/index.html');
 // });
 //
-app.use('/api', nurseLocationSocket);
-app.use('/api', nurseLocation);
-//
+
+
 io.on('connection', function(socket) {
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function(data) {
     console.log('data', data);
   });
 });
+

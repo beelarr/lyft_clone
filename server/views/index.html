@@ -35,18 +35,18 @@
 var socket = io();
 
 socket.on('connect', function () {
-  console.log('Socket ID', socket.id);
+  console.log('Socket ID in Index', socket.id);
 
   var nurseCurrentData = {
   	"socketId": socket.id,
     "locationId": "5aaa8ad4734d1d6b71219edd"
   };
 
-  var url = 'http://localhost:3000/api/nurseLocationSocket/' + nurseCurrentData.locationId;
+  var url = `/api/nurseLocationSocket/${nurseCurrentData.locationId}`;
 
 	fetch(url, {
 		method: 'PUT',
-		body: nurseCurrentData,
+		body: JSON.stringify(nurseCurrentData),
 		headers: new Headers({
 			'Content-Type': 'application/json',
 		}),

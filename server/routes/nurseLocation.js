@@ -40,7 +40,7 @@ router.put('/nurseLocationSocket/:id', function(req, res, next) {
   if (req.body) {
     db.nursesLocation.update(
       { _id: mongoJS.ObjectID(req.params.id) },
-      { $set: { socketId: req.body.socketId } },
+      { $set: { socketId: req.body.socketId} },
       function(err, updateDetails) {
         if (err) {
           res.send(err);
@@ -55,6 +55,17 @@ router.put('/nurseLocationSocket/:id', function(req, res, next) {
       error: `Houston we have a problem. ${req.body}`,
     });
   }
+});
+
+// Test get
+
+router.get('/nurseLocationSocket/:id', function(req, res, next) {
+	db.nursesLocation.find(function(err, nurseLocation) {
+		if (err) {
+			res.send(err);
+		}
+		res.json(nurseLocation);
+	});
 });
 
 module.exports = router;
