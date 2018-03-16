@@ -70,6 +70,15 @@ class Map extends Component {
           draggable
           onDragEnd={e => this.onDragHandler(e.nativeEvent)}
         />
+	      <Marker
+	        coordinate={{
+		        latitude: 36.165,
+		        longitude: -86.769
+	        }}
+	        image={nurseCar}
+	      />
+
+
 	      {
 	        this.props.nearbyNurses.map((marker) => {
 	            console.log('marker-latitude', marker
