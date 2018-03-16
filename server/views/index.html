@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nurse Service List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<h1>Nurse Test</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <form id="driverForm">
+                <select class="form-control" id="bookingStatus">
+                    <option value="confirmed">Confirmed</option>
+                </select>
+                <br/>
+                <input type="button" name="submit" value="Confirm" Booking” class="btn btn-danger">
+            </form>
+        </div>
+        <div class="col-xs-6"></div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js" type="text/javascript"></script>
+
+<script>
+
+var socket = io();
+
+socket.on('connect', function () {
+  console.log('Socket ID in Index', socket.id);
+
+  var nurseCurrentData = {
+  	"socketId": socket.id,
+    "locationId": "5aaa8ad4734d1d6b71219edd"
+  };
+
+  var url = `/api/nurseLocationSocket/${nurseCurrentData.locationId}`;
+
+	fetch(url, {
+		method: 'PUT',
+		body: JSON.stringify(nurseCurrentData),
+		headers: new Headers({
+			'Content-Type': 'application/json',
+		}),
+	})
+		.then(res => res.json())
+		.catch(error => console.log('Error', error))
+		.then(response => console.log('Success:', response));
+})
+</script>
+
