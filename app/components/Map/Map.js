@@ -71,11 +71,12 @@ class Map extends Component {
           onDragEnd={e => this.onDragHandler(e.nativeEvent)}
         />
 	      {
-	        this.props.nearbyNurses.map((marker, index) => {
-	            console.log('marker-latitude', marker.coordinate.coordinates[1]);
+	        this.props.nearbyNurses.map((marker) => {
+	            console.log('marker-latitude', marker
+              );
 
 	            <Marker
-			          key={index}
+			          key={marker.socketId}
 			          coordinate={{
 				          latitude: marker.coordinate.coordinates[1],
 				          longitude: marker.coordinate.coordinates[0],
@@ -93,6 +94,7 @@ class Map extends Component {
 const mapStateToProps = state => {
   const coordinate = state.locations.user.coordinate;
   const nearbyNurses = state.locations.nearbyNurses;
+  console.log('nearbyNurses', nearbyNurses);
 
   return {
     coordinate,
