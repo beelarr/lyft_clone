@@ -31,8 +31,13 @@ class Map extends Component {
       }
     );
 
-    fetch('http://localhost:3000/api/nurseLocation').then(response =>
+    const url = `http://localhost:3000/api/nurseLocation?longitude=${
+      this.props.coordinate.longitude
+    }&latitude=${this.props.coordinate.latitude}`;
+
+    fetch(url).then(response =>
       response.json().then(data => {
+        console.log('data', data);
         setTimeout(() => this.props.dispatch(getNearbyNurses(data)), 2000);
       })
     );

@@ -13,24 +13,27 @@ router.get('/nurseLocation', function(req, res, next) {
   db.nursesLocation.ensureIndex({ coordinate: '2dsphere' });
   db.nursesLocation.find(
     {
-	    "coordinate":{
-		    "$near":{
-			    "$geometry":{
-				    "type":"Point",
-				    "coordinates": [parseFloat(req.query.longitude) || -86.768, parseFloat(req.query.latitude) || 36.165]
-			    },
-			    "$maxDistance":10000
-		    }
-	    }
-    }, function(err, location){
-		  if(err){
-			  res.send(err);
-
-		  }else{
-			  res.send(location);
-		  }
-	  });
-
+      coordinate: {
+        $near: {
+          $geometry: {
+            type: 'Point',
+            coordinates: [
+              parseFloat(req.query.longitude),
+              parseFloat(req.query.latitude),
+            ],
+          },
+          $maxDistance: 10000,
+        },
+      },
+    },
+    function(err, location) {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(location);
+      }
+    }
+  );
 });
 
 // Update Nurse's socket id
@@ -40,7 +43,7 @@ router.put('/nurseLocationSocket/:id', function(req, res, next) {
   if (req.body) {
     db.nursesLocation.update(
       { _id: mongoJS.ObjectID(req.params.id) },
-      { $set: { socketId: req.body.socketId} },
+      { $set: { socketId: req.body.socketId } },
       function(err, updateDetails) {
         if (err) {
           res.send(err);
@@ -60,12 +63,12 @@ router.put('/nurseLocationSocket/:id', function(req, res, next) {
 // Test get
 
 router.get('/nurseLocationSocket/:id', function(req, res, next) {
-	db.nursesLocation.find(function(err, nurseLocation) {
-		if (err) {
-			res.send(err);
-		}
-		res.json(nurseLocation);
-	});
+  db.nursesLocation.find(function(err, nurseLocation) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(nurseLocation);
+  });
 });
 
 module.exports = router;
