@@ -13,27 +13,24 @@ router.get('/nurseLocation', function(req, res, next) {
   db.nursesLocation.ensureIndex({ coordinate: '2dsphere' });
   db.nursesLocation.find(
     {
-      coordinate: {
-        $near: {
-          $geometry: {
-            type: 'Point',
-            coordinates: [
-              parseFloat(req.query.longitude),
-              parseFloat(req.query.latitude),
-            ],
-          },
-          $maxDistance: 10000,
-        },
-      },
-    },
-    function(err, location) {
-      if (err) {
-        res.send(err);
-      } else {
-        res.send(location);
-      }
-    }
-  );
+	    "coordinate":{
+		    "$near":{
+			    "$geometry":{
+				    "type":"Point",
+				    "coordinates": [parseFloat(req.query.longitude) || -86.768, parseFloat(req.query.latitude) || 36.165]
+			    },
+			    "$maxDistance":10000
+		    }
+	    }
+    }, function(err, location){
+		  if(err){
+			  res.send(err);
+
+		  }else{
+			  res.send(location);
+		  }
+	  });
+
 });
 
 // Update Nurse's socket id
