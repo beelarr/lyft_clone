@@ -16,7 +16,6 @@ const { width, height } = Dimensions.get('window');
 
 class Home extends Component {
   render() {
-    console.log('props in home', this.props);
     return (
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
