@@ -4,7 +4,6 @@ import styles from './styles';
 import { Alert, Platform } from 'react-native';
 import {
   getUsersInitialLocation,
-  getUsersCustomLocation,
   getNearbyNurses,
 } from '../../actions/locations';
 import { connect } from 'react-redux';
