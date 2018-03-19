@@ -69,14 +69,6 @@ class Map extends Component {
       >
         {markerForAndroid}
 
-        {/*<Marker*/}
-        {/*coordinate={{*/}
-        {/*latitude: 36.165,*/}
-        {/*longitude: -86.769,*/}
-        {/*}}*/}
-        {/*image={nurseCar}*/}
-        {/*/>*/}
-
         {this.props.nearbyNurses.map(nurse => (
           <Marker
             key={nurse._id}
