@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MapView } from 'expo';
 import styles from './styles';
+import { Alert, Platform  } from 'react-native';
 import {
   getUsersInitialLocation,
   getUsersCustomLocation,
@@ -21,7 +22,7 @@ class Map extends Component {
 		  position => {
 			  this.props.dispatch(getUsersInitialLocation(position));
 		  },
-		  error => `Alert ${error.message}`,
+		  error => Alert.alert(`Alert ${error.message}`),
 		  {
 			  enableHighAccuracy: true,
 			  timeout: 20000,
@@ -47,7 +48,19 @@ class Map extends Component {
     navigator.geolocation.clearWatch(this.watchId);
   }
 
+
+
   render() {
+
+	  const markerForAndroid = Platform.OS === 'android' ? <Marker
+			  coordinate={this.props.coordinate}
+			  title="My Location"
+			  description="Drag to an alternate location."
+			  draggable
+			  onDragEnd={e => this.onDragHandler(e.nativeEvent)}
+		  /> : null
+
+
     return (
       <MapView
         style={styles.container}
@@ -63,13 +76,7 @@ class Map extends Component {
         followsUserLocation={true}
         showsMyLocationButton={true}
       >
-        <Marker
-          coordinate={this.props.coordinate}
-          title="My Location"
-          description="Drag to an alternate location."
-          draggable
-          onDragEnd={e => this.onDragHandler(e.nativeEvent)}
-        />
+	      { markerForAndroid }
 	      <Marker
 	        coordinate={{
 		        latitude: 36.165,
@@ -81,9 +88,6 @@ class Map extends Component {
 
 	      {
 	        this.props.nearbyNurses.map((marker) => {
-	            console.log('marker-latitude', marker
-              );
-
 	            <Marker
 			          key={marker.socketId}
 			          coordinate={{
@@ -103,8 +107,7 @@ class Map extends Component {
 const mapStateToProps = state => {
   const coordinate = state.locations.user.coordinate;
   const nearbyNurses = state.locations.nearbyNurses;
-  console.log('nearbyNurses', nearbyNurses);
-
+	console.log('Coordinates', coordinate);
   return {
     coordinate,
     nearbyNurses,
