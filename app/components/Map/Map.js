@@ -28,17 +28,25 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    const url = `http://localhost:3000/api/nurseLocation?longitude=
+    const url = `http://172.16.42.48:3000/api/nurseLocation?longitude=
     ${this.props.coordinate.longitude}&latitude=${
       this.props.coordinate.latitude
     }`;
 
     fetch(url).then(response =>
-      response.json().then(data => {
-        setTimeout(() => {
-          this.props.dispatch(getNearbyNurses(data));
-        }, 2500);
-      })
+      response
+        .json()
+        .then(data => {
+          setTimeout(() => {
+            this.props.dispatch(getNearbyNurses(data));
+          }, 2500);
+        })
+        .catch(err => {
+          Alert.alert(`Error fetching nurses: ${err.message}`);
+          console.log(
+            `Error fetching nurses. Might be related to: ${err.message}`
+          );
+        })
     );
   }
 
