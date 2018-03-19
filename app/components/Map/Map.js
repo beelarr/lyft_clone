@@ -28,9 +28,10 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    const url = `http://localhost:3000/api/nurseLocation?longitude=${
-      this.props.coordinate.longitude
-    }&latitude=${this.props.coordinate.latitude}`;
+    const url = `http://localhost:3000/api/nurseLocation?longitude=
+    ${this.props.coordinate.longitude}&latitude=${
+      this.props.coordinate.latitude
+    }`;
 
     fetch(url).then(response =>
       response.json().then(data => {
@@ -68,24 +69,16 @@ class Map extends Component {
       >
         {markerForAndroid}
 
-        <Marker
-          coordinate={{
-            latitude: 36.165,
-            longitude: -86.769,
-          }}
-          image={nurseCar}
-        />
-
-        {this.props.nearbyNurses.map(marker => {
+        {this.props.nearbyNurses.map(nurse => (
           <Marker
-            key={marker.socketId}
+            key={nurse._id}
             coordinate={{
-              latitude: marker.coordinate.coordinates[1],
-              longitude: marker.coordinate.coordinates[0],
+              latitude: nurse.coordinate.coordinates[1],
+              longitude: nurse.coordinate.coordinates[0],
             }}
             image={nurseCar}
-          />;
-        })}
+          />
+        ))}
       </MapView>
     );
   }
@@ -94,7 +87,7 @@ class Map extends Component {
 const mapStateToProps = state => {
   const coordinate = state.locations.user.coordinate;
   const nearbyNurses = state.locations.nearbyNurses;
-  console.log('Coordinates', coordinate);
+  console.log('Nearby Nurses', nearbyNurses);
   return {
     coordinate,
     nearbyNurses,
