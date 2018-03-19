@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MapView } from 'expo';
 import styles from './styles';
-import { Alert, Platform  } from 'react-native';
+import { Alert, Platform } from 'react-native';
 import {
   getUsersInitialLocation,
   getUsersCustomLocation,
@@ -12,54 +12,45 @@ import nurseCar from '../../assests/carMarker.png';
 
 const { Marker } = MapView;
 
-
 class Map extends Component {
-  onDragHandler = e => this.props.dispatch(getUsersCustomLocation(e.coordinate));
-
-
   componentWillMount() {
-	  this.watchId = navigator.geolocation.watchPosition(
-		  position => {
-			  this.props.dispatch(getUsersInitialLocation(position));
-		  },
-		  error => Alert.alert(`Alert ${error.message}`),
-		  {
-			  enableHighAccuracy: true,
-			  timeout: 20000,
-			  maximumAge: 1000,
-			  distanceFilter: 10,
-		  }
-	  );
+    this.watchId = navigator.geolocation.watchPosition(
+      position => {
+        this.props.dispatch(getUsersInitialLocation(position));
+      },
+      error => Alert.alert(`Alert ${error.message}`),
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 1000,
+        distanceFilter: 10,
+      }
+    );
   }
 
-	componentDidMount() {
-		const url = `http://localhost:3000/api/nurseLocation?longitude=${
-			this.props.coordinate.longitude
-			}&latitude=${this.props.coordinate.latitude}`;
+  componentDidMount() {
+    const url = `http://localhost:3000/api/nurseLocation?longitude=${
+      this.props.coordinate.longitude
+    }&latitude=${this.props.coordinate.latitude}`;
 
-		fetch(url).then(response =>
-			response.json().then(data => {
-				setTimeout(() => {this.props.dispatch(getNearbyNurses(data))}, 2500);
-			})
-		);
-	}
+    fetch(url).then(response =>
+      response.json().then(data => {
+        setTimeout(() => {
+          this.props.dispatch(getNearbyNurses(data));
+        }, 2500);
+      })
+    );
+  }
 
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
   }
 
-
-
   render() {
-
-	  const markerForAndroid = Platform.OS === 'android' ? <Marker
-			  coordinate={this.props.coordinate}
-			  title="My Location"
-			  description="Drag to an alternate location."
-			  draggable
-			  onDragEnd={e => this.onDragHandler(e.nativeEvent)}
-		  /> : null
-
+    const markerForAndroid =
+      Platform.OS === 'android' ? (
+        <Marker coordinate={this.props.coordinate} title="My Location" />
+      ) : null;
 
     return (
       <MapView
@@ -76,30 +67,27 @@ class Map extends Component {
         followsUserLocation={true}
         showsMyLocationButton={true}
       >
-	      { markerForAndroid }
-	      <Marker
-	        coordinate={{
-		        latitude: 36.165,
-		        longitude: -86.769
-	        }}
-	        image={nurseCar}
-	      />
+        {markerForAndroid}
 
+        <Marker
+          coordinate={{
+            latitude: 36.165,
+            longitude: -86.769,
+          }}
+          image={nurseCar}
+        />
 
-	      {
-	        this.props.nearbyNurses.map((marker) => {
-	            <Marker
-			          key={marker.socketId}
-			          coordinate={{
-				          latitude: marker.coordinate.coordinates[1],
-				          longitude: marker.coordinate.coordinates[0],
-			          }}
-			          image={nurseCar}
-
-	            />
-	          })
-        }
-	      </MapView>
+        {this.props.nearbyNurses.map(marker => {
+          <Marker
+            key={marker.socketId}
+            coordinate={{
+              latitude: marker.coordinate.coordinates[1],
+              longitude: marker.coordinate.coordinates[0],
+            }}
+            image={nurseCar}
+          />;
+        })}
+      </MapView>
     );
   }
 }
@@ -107,7 +95,7 @@ class Map extends Component {
 const mapStateToProps = state => {
   const coordinate = state.locations.user.coordinate;
   const nearbyNurses = state.locations.nearbyNurses;
-	console.log('Coordinates', coordinate);
+  console.log('Coordinates', coordinate);
   return {
     coordinate,
     nearbyNurses,
