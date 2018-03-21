@@ -28,7 +28,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    const url = `http://172.16.42.48:3000/api/nurseLocation?longitude=
+    const url = `http://10.0.1.13:3000/api/nurseLocation?longitude=
     ${this.props.coordinate.longitude}&latitude=${
       this.props.coordinate.latitude
     }`;
@@ -55,11 +55,6 @@ class Map extends Component {
   }
 
   render() {
-    const markerForAndroid =
-      Platform.OS === 'android' ? (
-        <Marker coordinate={this.props.coordinate} title="My Location" />
-      ) : null;
-
     return (
       <MapView
         style={styles.container}
@@ -75,7 +70,9 @@ class Map extends Component {
         followsUserLocation={true}
         showsMyLocationButton={true}
       >
-        {markerForAndroid}
+        {Platform.OS === 'android' && (
+          <Marker coordinate={this.props.coordinate} title="My Location" />
+        )}
 
         {this.props.nearbyNurses.map(nurse => (
           <Marker
