@@ -6,7 +6,7 @@ import { Provider, connect } from 'react-redux';
 import store from './config/store';
 
 import Map from './screens/Map';
-import Home from './screens/Home';
+import Home from './screens/Login';
 import Services from './screens/Services';
 
 EStyleSheet.build({
