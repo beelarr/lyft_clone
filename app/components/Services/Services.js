@@ -10,7 +10,7 @@ class Services extends Component {
     return (
       <View>
         <Button
-          title="Services"
+          title="Book Services"
           titleStyle={{ fontWeight: '900', color: '#371B92' }}
           buttonStyle={{
             backgroundColor: 'white',

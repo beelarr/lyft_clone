@@ -25,8 +25,8 @@ export default () => (
     <Router>
       <Scene key="root">
         <Scene key="home" component={Home} title="Login" initial={true} />
+        <Scene key="map" component={Map} title="Available Nurses" />
         <Scene key="services" component={Services} title="Services" />
-        <Scene key="map" component={Map} title="Choose Service Location" />
       </Scene>
     </Router>
   </Provider>
