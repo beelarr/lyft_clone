@@ -12,6 +12,7 @@ import nurseCar from '../../assests/carMarker.png';
 const { Marker } = MapView;
 
 class Map extends Component {
+  // Getting User's location prior to rendering
   componentWillMount() {
     this.watchId = navigator.geolocation.watchPosition(
       position => {
@@ -26,9 +27,9 @@ class Map extends Component {
       }
     );
   }
-
+  // Finding nearby nurses 2.5 sec after the map renders
   componentDidMount() {
-    const url = `http://172.16.42.48:3000/api/nurseLocation?longitude=
+    const url = `http://10.0.1.13:3000/api/nurseLocation?longitude=
     ${this.props.coordinate.longitude}&latitude=${
       this.props.coordinate.latitude
     }`;
@@ -49,17 +50,12 @@ class Map extends Component {
         })
     );
   }
-
+  // Clears the watch of the User's location
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
   }
 
   render() {
-    const markerForAndroid =
-      Platform.OS === 'android' ? (
-        <Marker coordinate={this.props.coordinate} title="My Location" />
-      ) : null;
-
     return (
       <MapView
         style={styles.container}
@@ -75,7 +71,10 @@ class Map extends Component {
         followsUserLocation={true}
         showsMyLocationButton={true}
       >
-        {markerForAndroid}
+        {/* Needed to render the User's location in Android*/}
+        {Platform.OS === 'android' && (
+          <Marker coordinate={this.props.coordinate} title="My Location" />
+        )}
 
         {this.props.nearbyNurses.map(nurse => (
           <Marker
@@ -95,7 +94,6 @@ class Map extends Component {
 const mapStateToProps = state => {
   const coordinate = state.locations.user.coordinate;
   const nearbyNurses = state.locations.nearbyNurses;
-  console.log('Nearby Nurses', nearbyNurses);
   return {
     coordinate,
     nearbyNurses,

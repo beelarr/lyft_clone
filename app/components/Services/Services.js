@@ -4,6 +4,7 @@ import { Dimensions, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
+// This should be come a flat list of services
 class Services extends Component {
   render(props) {
     return (

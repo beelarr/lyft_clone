@@ -6,8 +6,8 @@ import { Provider, connect } from 'react-redux';
 import store from './config/store';
 
 import Map from './screens/Map';
-import Home from './screens/Home';
-import Services from './screens/Services'
+import Home from './screens/Login';
+import Services from './screens/Services';
 
 EStyleSheet.build({
   $primaryBlue: '#61D4D5',
@@ -20,13 +20,12 @@ EStyleSheet.build({
   $loginButtonText: '#371B92',
 });
 
-
 export default () => (
   <Provider store={store}>
     <Router>
       <Scene key="root">
-        <Scene key="home" component={Home} title="Home" initial={true} />
-        <Scene key="services" component={Services} title="Services"/>
+        <Scene key="home" component={Home} title="Login" initial={true} />
+        <Scene key="services" component={Services} title="Services" />
         <Scene key="map" component={Map} title="Choose Service Location" />
       </Scene>
     </Router>

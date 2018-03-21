@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import {
-  StatusBar,
-  KeyboardAvoidingView,
-  Dimensions,
-  View,
-} from 'react-native';
+import { StatusBar, KeyboardAvoidingView, View } from 'react-native';
 import { Container } from '../components/Container';
 import { Services } from '../components/Services';
 import { connect } from 'react-redux';
 import { bookServices } from '../actions/locations';
 import { Actions } from 'react-native-router-flux';
 
-
 class ServicesScreen extends Component {
   bookHandler = () => {
+    // Example until Login is built.
     const user = {
       userName: 'beelarr',
       firstName: 'Bryon',
@@ -23,7 +18,7 @@ class ServicesScreen extends Component {
         latitude: 36.218,
       },
     };
-
+    // For dev - When Services is clicked I am booking that service in the db
     this.props.dispatch(bookServices(user));
 
     const url = 'http://localhost:3000/api/bookings';
@@ -43,14 +38,8 @@ class ServicesScreen extends Component {
   render() {
     return (
       <Container>
-        <StatusBar translucent={false} barStyle="light-content" />
-        <KeyboardAvoidingView behavior="padding">
-          <View
-            style={{ alignItems: 'center', justifyContent: 'space-around' }}
-          >
-            <Services onPress={this.bookHandler && Actions.map} />
-          </View>
-        </KeyboardAvoidingView>
+        <StatusBar hidden={true} barStyle="light-content" />
+        <Services onPress={this.bookHandler && Actions.map} />
       </Container>
     );
   }

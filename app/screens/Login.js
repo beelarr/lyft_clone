@@ -6,19 +6,17 @@ import {
   View,
 } from 'react-native';
 import { Container } from '../components/Container';
-import { connect } from 'react-redux';
 import { Logo } from '../components/Logo';
 import { Button, Input } from 'react-native-elements';
 import { Actions } from 'react-native-router-flux';
 import { FontAwesome } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
-
 class Home extends Component {
   render() {
     return (
       <Container>
-        <StatusBar translucent={false} barStyle="light-content" />
+        <StatusBar hidden={true} />
         <KeyboardAvoidingView behavior="padding">
           <Logo />
           <View
