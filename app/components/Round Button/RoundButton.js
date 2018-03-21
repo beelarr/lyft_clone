@@ -9,6 +9,7 @@ const button = props => (
     buttonStyle={styles.button}
     titleStyle={styles.btnText}
     containerStyle={styles.buttonContainer}
+    borderRadius={styles.buttonContainer.borderRadius}
   />
 );
 

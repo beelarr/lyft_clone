@@ -25,15 +25,10 @@ export default EStyleSheet.create({
     backgroundColor: '#25BDE4',
   },
   button: {
+    height: 82,
+    width: 82,
     backgroundColor: '#25BDE4',
-    shadowColor: '#25BDE4',
-    shadowRadius: 0,
-    shadowOpacity: 0,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 0,
-      width: 0,
-    },
+    borderRadius: 40,
   },
   disabledState: {
     backgroundColor: '#D7D7D7',
