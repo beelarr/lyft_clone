@@ -1,42 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, List, ListItem } from 'react-native-elements';
-import { Dimensions, View } from 'react-native';
+import { View } from 'react-native';
 import list from '../../data/Services';
+import styles from './styles';
 
-const { width, height } = Dimensions.get('window');
-
-class Services extends Component {
-  render() {
-    return (
-      <View>
-        <List containerStyle={{ marginBottom: 20 }}>
-          {list.map((listItem, i) => (
-            <ListItem
-              roundAvatar
-              avatar={{ uri: listItem.avatar_url }}
-              key={i}
-              title={listItem.name}
-              subtitle={listItem.subtitle}
-            />
-          ))}
-        </List>
-        <Button
-          title="Confirm Service"
-          titleStyle={{ fontWeight: '900', color: '#371B92' }}
-          buttonStyle={{
-            backgroundColor: 'white',
-            width: width / 1.75,
-            height: height / 15,
-            borderColor: '#371B92',
-            borderWidth: 2,
-            borderRadius: 25,
-          }}
-          containerStyle={{ marginTop: 20 }}
-          onPress={this.props.onPress}
+const Services = props => (
+  <View>
+    <List containerStyle={styles.listContainer}>
+      {list.map((listItem, i) => (
+        <ListItem
+          roundAvatar
+          avatar={{ uri: listItem.avatar_url }}
+          key={i}
+          title={listItem.name}
+          subtitle={listItem.subtitle}
         />
-      </View>
-    );
-  }
-}
+      ))}
+    </List>
+    <Button
+      title="Confirm Service"
+      titleStyle={styles.title}
+      buttonStyle={styles.button}
+      containerStyle={styles.buttonContainer}
+      onPress={props.onPress}
+    />
+  </View>
+);
 
 export default Services;
