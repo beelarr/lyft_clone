@@ -22,14 +22,12 @@ export const getUsersCustomLocation = position => ({
 export const bookServices = user => ({
   type: BOOK_SERVICES,
   payload: {
-    data: {
-      userName: user.userName,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      coordinate: {
-        longitude: user.coordinate.longitude,
-        latitude: user.coordinate.latitude,
-      },
+    userName: user.userName,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    coordinate: {
+      longitude: user.coordinate.longitude,
+      latitude: user.coordinate.latitude,
     },
   },
 });
