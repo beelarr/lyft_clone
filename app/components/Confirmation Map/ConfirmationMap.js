@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 const { Marker } = MapView;
 
 class Map extends Component {
+
   onDragHandler = e =>
     this.props.dispatch(getUsersCustomLocation(e.coordinate));
 

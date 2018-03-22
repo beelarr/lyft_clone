@@ -2,7 +2,7 @@ import React from 'react';
 
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Router, Scene } from 'react-native-router-flux';
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './config/store';
 
 import Map from './screens/Map';

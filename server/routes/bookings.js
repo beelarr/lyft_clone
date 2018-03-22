@@ -1,13 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var mongoJS = require('mongojs');
+const express = require('express');
+const router = express.Router();
+const mongoJS = require('mongojs');
 
-var db = mongoJS(
+const db = mongoJS(
   'mongodb://beelarr:123456@ds215089.mlab.com:15089/ivasap-mobile',
   ['bookings']
 );
 
-router.get('/bookings', function(req, res, next) {
+router.get('/bookings', (req, res, next) => {
   db.bookings.find(function(err, bookings) {
     if (err) {
       res.send(err);
@@ -16,12 +16,12 @@ router.get('/bookings', function(req, res, next) {
   });
 });
 
-router.post('/bookings', function(req, res, next) {
-  var booking = req.body;
+router.post('/bookings', (req, res, next) => {
+  let booking = req.body;
   console.log('booking in router', booking);
 
   if (booking.userName) {
-    db.bookings.save(booking, function(err, savedBooking) {
+    db.bookings.save(booking, (err, savedBooking) => {
       if (err) {
         res.send(err);
       }
