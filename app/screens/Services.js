@@ -4,6 +4,7 @@ import { Container } from '../components/Container';
 import { Services } from '../components/Services';
 import { connect } from 'react-redux';
 import { bookServices } from '../actions/locations';
+import { Actions } from 'react-native-router-flux';
 
 class ServicesScreen extends Component {
   bookHandler = () => {
@@ -38,7 +39,7 @@ class ServicesScreen extends Component {
     return (
       <Container>
         <StatusBar hidden={true} barStyle="light-content" />
-        <Services onPress={this.bookHandler} />
+        <Services onPress={this.bookHandler && Actions.map} />
       </Container>
     );
   }
