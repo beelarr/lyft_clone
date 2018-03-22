@@ -1,7 +1,4 @@
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { Dimensions } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
 
 export default EStyleSheet.create({
   buttonContainer: {
