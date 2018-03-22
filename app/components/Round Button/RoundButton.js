@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-native-elements';
 import styles from './styles';
 
-const Button = props => (
+const RoundButton = props => (
   <Button
     onPress={props.onPress}
     title="Services"
@@ -13,4 +13,4 @@ const Button = props => (
   />
 );
 
-export default Button;
+export default RoundButton;
