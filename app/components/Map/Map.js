@@ -87,6 +87,22 @@ class Map extends Component {
             image={nurseCar}
           />
         ))}
+        <Marker
+          key={1}
+          coordinate={{
+            latitude: 36.196025,
+            longitude: -86.756563,
+          }}
+          image={nurseCar}
+        />
+        <Marker
+          key={2}
+          coordinate={{
+            latitude: 36.165012,
+            longitude: -86.776403,
+          }}
+          image={nurseCar}
+        />
       </MapView>
     );
   }
