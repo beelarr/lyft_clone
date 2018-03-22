@@ -1,15 +1,15 @@
-var express = require('express');
-var router = express.Router();
-var mongoJS = require('mongojs');
+const express = require('express');
+const router = express.Router();
+const mongoJS = require('mongojs');
 
-var db = mongoJS(
+const db = mongoJS(
   'mongodb://beelarr:123456@ds215089.mlab.com:15089/ivasap-mobile',
   ['nursesLocation']
 );
 
 // Get for nearby nurse
 
-router.get('/nurseLocation', function(req, res, next) {
+router.get('/nurseLocation', (req, res, next) => {
   db.nursesLocation.ensureIndex({ coordinate: '2dsphere' });
   db.nursesLocation.find(
     {
@@ -26,7 +26,7 @@ router.get('/nurseLocation', function(req, res, next) {
         },
       },
     },
-    function(err, location) {
+    (err, location) => {
       if (err) {
         res.send(err);
       } else {
@@ -38,13 +38,13 @@ router.get('/nurseLocation', function(req, res, next) {
 
 // Update Nurse's socket id
 
-router.put('/nurseLocationSocket/:id', function(req, res, next) {
-  var io = req.app.io;
+router.put('/nurseLocationSocket/:id', (req, res, next) => {
+  let io = req.app.io;
   if (req.body) {
     db.nursesLocation.update(
       { _id: mongoJS.ObjectID(req.params.id) },
       { $set: { socketId: req.body.socketId } },
-      function(err, updateDetails) {
+      (err, updateDetails) => {
         if (err) {
           res.send(err);
         } else {
@@ -62,8 +62,8 @@ router.put('/nurseLocationSocket/:id', function(req, res, next) {
 
 // Test get
 
-router.get('/nurseLocationSocket/:id', function(req, res, next) {
-  db.nursesLocation.find(function(err, nurseLocation) {
+router.get('/nurseLocationSocket/:id', (req, res, next) => {
+  db.nursesLocation.find((err, nurseLocation) => {
     if (err) {
       res.send(err);
     }
