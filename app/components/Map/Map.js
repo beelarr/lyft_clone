@@ -7,7 +7,7 @@ import {
   getNearbyNurses,
 } from '../../actions/locations';
 import { connect } from 'react-redux';
-import nurseCar from '../../assests/carMarker.png';
+import nurseCar from './images/carMarker.png';
 
 const { Marker } = MapView;
 

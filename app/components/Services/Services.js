@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, List, ListItem } from 'react-native-elements';
 import { Dimensions, View } from 'react-native';
-import list from '../../assests/Services';
+import list from '../../data/Services';
 
 const { width, height } = Dimensions.get('window');
 
