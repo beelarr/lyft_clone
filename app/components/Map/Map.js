@@ -8,6 +8,7 @@ import {
 } from '../../actions/locations';
 import { connect } from 'react-redux';
 import nurseCar from './images/carMarker.png';
+import ip from '../../data/localip';
 
 const { Marker } = MapView;
 
@@ -30,7 +31,7 @@ class Map extends Component {
 
   // Finding nearby nurses 2.5 sec after the map renders
   componentDidMount() {
-    const url = `http://10.0.1.13:3000/api/nurseLocation?longitude=${
+    const url = `http://${ip}/api/nurseLocation?longitude=${
       this.props.coordinate.longitude
     }&latitude=${this.props.coordinate.latitude}`;
 

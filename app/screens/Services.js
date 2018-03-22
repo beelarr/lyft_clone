@@ -5,6 +5,7 @@ import { Services } from '../components/Services';
 import { connect } from 'react-redux';
 import { bookServices } from '../actions/locations';
 import { Actions } from 'react-native-router-flux';
+import ip from '../data/localip';
 
 class ServicesScreen extends Component {
   bookHandler = () => {
@@ -21,7 +22,7 @@ class ServicesScreen extends Component {
     // For dev - When Services is clicked I am booking that service in the db
     this.props.dispatch(bookServices(user));
 
-    const url = 'http://10.0.1.13:3000/api/bookings';
+    const url = `http://${ip}/api/bookings`;
 
     fetch(url, {
       method: 'POST',
