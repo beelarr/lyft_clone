@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StatusBar, KeyboardAvoidingView, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { Container } from '../components/Container';
 import { Services } from '../components/Services';
 import { connect } from 'react-redux';
