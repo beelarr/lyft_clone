@@ -12,6 +12,8 @@ import nurseCar from './images/carMarker.png';
 const { Marker } = MapView;
 
 class Map extends Component {
+
+
   // Getting User's location prior to rendering
   componentWillMount() {
     this.watchId = navigator.geolocation.watchPosition(
@@ -27,12 +29,11 @@ class Map extends Component {
       }
     );
   }
+
+
   // Finding nearby nurses 2.5 sec after the map renders
   componentDidMount() {
-    const url = `http://10.0.1.13:3000/api/nurseLocation?longitude=
-    ${this.props.coordinate.longitude}&latitude=${
-      this.props.coordinate.latitude
-    }`;
+    const url = `http://10.0.1.13:3000/api/nurseLocation?longitude=${this.props.coordinate.longitude}&latitude=${this.props.coordinate.latitude}`;
 
     fetch(url).then(response =>
       response
@@ -44,12 +45,12 @@ class Map extends Component {
         })
         .catch(err => {
           Alert.alert(`Error fetching nurses: ${err.message}`);
-          console.log(
-            `Error fetching nurses. Might be related to: ${err.message}`
-          );
+          console.log(`Error fetching nurses. Might be related to: ${err.message}`);
         })
     );
   }
+
+
   // Clears the watch of the User's location
   componentWillUnmount() {
     navigator.geolocation.clearWatch(this.watchId);
