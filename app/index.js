@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from './config/store';
 
 import Map from './screens/Map';
-import Home from './screens/Login';
+import Login from './screens/Login';
 import Services from './screens/Services';
 
 EStyleSheet.build({
@@ -24,7 +24,7 @@ export default () => (
   <Provider store={store}>
     <Router>
       <Scene key="root">
-        <Scene key="home" component={Home} title="Login" initial={true} />
+        <Scene key="login" component={Login} title="Login" initial={true} />
         <Scene key="map" component={Map} title="Available Nurses" />
         <Scene key="services" component={Services} title="Services" />
       </Scene>

@@ -13,7 +13,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('window');
 
-const Home = () => (
+const Login = () => (
   <Container>
     <StatusBar hidden={true} />
     <KeyboardAvoidingView behavior="padding">
@@ -79,4 +79,4 @@ const Home = () => (
   </Container>
 );
 
-export default Home;
+export default Login;
