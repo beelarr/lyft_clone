@@ -69,7 +69,7 @@ class Map extends Component {
         provider={null}
         mapType="mutedStandard"
         showsUserLocation={true}
-        followsUserLocation={true}
+        // followsUserLocation={true}
         showsMyLocationButton={true}
       >
         {/* Needed to render the User's location in Android*/}
